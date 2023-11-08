@@ -4,7 +4,8 @@
   "description": "A fullstack blog where developers can communicate thier journies and ideas about code for other devs to see.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
