@@ -1,0 +1,37 @@
+{
+  "name": "fullstack-blog",
+  "version": "1.0.0",
+  "description": "A fullstack blog where developers can communicate thier journies and ideas about code for other devs to see.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elmfer/fullstack-blog.git"
+  },
+  "keywords": [
+    "blog",
+    "devlog",
+    "users",
+    "social",
+    "media",
+    "code",
+    "communication",
+    "idea",
+    "journies"
+  ],
+  "author": "elmfer",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/elmfer/fullstack-blog/issues"
+  },
+  "homepage": "https://github.com/elmfer/fullstack-blog#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "express-handlebars": "^7.1.2",
+    "express-session": "^1.17.3",
+    "mysql2": "^3.6.3",
+    "sequelize": "^6.34.0"
+  }
+}
