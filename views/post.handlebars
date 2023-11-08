@@ -2,8 +2,97 @@
   <card-header>Posts > {{ title }}</card-header>
   <div>Created On: {{ format_date createdAt }}</div>
   <div>By: {{ 'author.username' }}</div>
+  <hr>
+  {{#if canEdit }}
+  <button onclick="document.location.assign('/editpost/{{ id }}')">Edit</button>
+  <button id="delete-post-btn" onclick="doDeletePost();">Delete</button>
+  {{/if}}
 </card>
 
 <card class="content">
   {{ content }}
 </card>
+
+<card>
+  <card-header>Comments</card-header>
+
+  <item-card>
+    <div style="flex-grow: 1;">
+      {{#if loggedIn }}
+      <card-header>Create Comment</card-header>
+
+      <div style="display: flex;">
+        <textarea style="flex: 1; max-width: 100%"></textarea>
+      </div>
+      <button style="margin-top: 1rem;" onclick="addComment();" id="add-comment-btn">Add Comment</button>
+      {{else}}
+      <card-header>Login to Comment</card-header>
+      <button onclick="document.location.assign('/login')">Login</button>
+      {{/if}}
+    </div>
+  </item-card>
+  {{#each comments as |comment|}}
+  {{> comment-item}}
+  {{/each}}
+</card>
+
+{{#if loggedIn}}
+<script>
+  async function addComment() {
+    // Disable the button
+    $('#add-comment-btn').prop('disabled', true);
+
+    const comment = $('textarea').val();
+    $('textarea').val('');
+    $('textarea').prop('placeholder', 'Adding comment...');
+
+    const response = await fetch('/posts/{{id}}', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        content: comment
+      }),
+    });
+
+    if (response.ok) {
+      await sleep(1000);
+
+      document.location.reload();
+    } else {
+      alert('Failed to add comment');
+    }
+  }
+</script>
+{{/if}}
+
+{{#if canEdit}}
+<script>
+  async function doDeletePost() {
+    // Disable the button
+    $('#delete-post-btn').prop('disabled', true);
+
+    // Confirm delete
+    if (!confirm('Are you sure you want to delete this post?')) {
+      // Re-enable the button
+      $('#delete-post-btn').prop('disabled', false);
+      return;
+    }
+
+    const response = await fetch('/api/posts/{{id}}', {
+      method: 'DELETE'
+    });
+
+    if (response.ok) {
+      await sleep(1000);
+
+      document.location.assign('/dashboard');
+    } else {
+      alert('Failed to delete post');
+      // Re-enable the button
+      $('#delete-post-btn').prop('disabled', false);
+    }
+  }
+</script>
+{{/if}}
