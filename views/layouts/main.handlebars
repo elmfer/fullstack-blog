@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>The Fullstack Blog</title>
+
+    <link rel="stylesheet" href="/assets/css/style.css">
+  </head>
+  <body>
+    <header>
+      <code-window>
+        <div style="display: flex; gap: 0.4375rem; padding-bottom: .5rem;">
+          <code-window-close></code-window-close>
+          <code-window-minimize></code-window-minimize>
+          <code-window-fullscreen></code-window-fullscreen>
+        </div>
+        <div style="display: flex; justify-content: center; flex-direction: row;">
+          <a href="/" style="text-decoration: none;">
+            <pre id="title">|</pre>
+          </a>
+        </div>
+      </code-window>
+
+      <p>Fullstack dev blog, home of the passionate developers who likes to share their journies and ideas with other developers.</p>
+      <hr>
+      <nav>
+        <ul>
+          <li><a href="/threads">Threads</a></li>
+          <li><a href="/posts">Posts</a></li>
+          <li><a href="/articles">Articles</a></li>
+          <li><a href="/login">Login</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div id="content-area">
+      <div style="display: flex; flex-direction: row; justify-content: center; flex-grow: 1;">
+        <main>
+          {{{ body }}}
+        </main>
+      </div>
+
+      <footer>
+        <nav style="background-image: none;">
+          <ul>
+            <li><a href="/threads">Threads</a></li>
+            <li><a href="/posts">Posts</a></li>
+            <li><a href="/articles">Articles</a></li>
+            <li><a href="/login">Login</a></li>
+          </ul>
+        </nav>
+      </footer>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="/assets/js/progressive-loader.js"></script>
+    <script src="/assets/js/util.js"></script>
+    <script src="/assets/js/script.js"></script>
+  </body>
+</html>
