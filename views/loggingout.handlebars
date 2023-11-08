@@ -1,0 +1,35 @@
+{{#if loggedIn}}
+<card>
+  <card-header>You are being logged out</card-header>
+  Hang tight!
+</card>
+
+<script>
+  async function doLogout() {
+    await fetch('/api/users/logout', {
+      method: 'POST',
+    });
+
+    await sleep(1500);
+
+    document.location.assign('/');
+  }
+
+  doLogout();
+</script>
+{{else}}
+<card>
+  <card-header>You were not logged in</card-header>
+  Redirecting you back to the home page.
+</card>
+
+<script>
+  async function gotoHome() {
+    await sleep(1500);
+
+    document.location.assign('/');
+  }
+
+  gotoHome();
+</script>
+{{/if}}
