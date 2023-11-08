@@ -292,3 +292,18 @@ pre {
 .content a {
   color: rgb(0, 140, 255);
 }
+
+textarea {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: solid 1px rgb(80, 80, 80);
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+  resize: vertical;
+}
+
+input {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: solid 1px rgb(80, 80, 80);
+  box-shadow: 0 3px 7px rgba(0, 0, 0, 0.3);
+}
