@@ -5,6 +5,10 @@
     <title>The Fullstack Blog</title>
 
     <link rel="stylesheet" href="/assets/css/style.css">
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script src="/assets/js/progressive-loader.js"></script>
+    <script src="/assets/js/util.js"></script>
   </head>
   <body>
     <header>
@@ -23,10 +27,17 @@
 
       <p>Fullstack dev blog, home of the passionate developers who likes to share their journies and ideas with other developers.</p>
       <hr>
+      {{#if loggedIn}}
+      <p>Welcome <strong>{{ username }}</strong>!</p>
+      {{/if}}
       <nav>
         <ul>
           <li><a href="/posts">Posts</a></li>
+          {{#if loggedIn}}
+          <li><a href="/logout">Logout</a></li>
+          {{else}}
           <li><a href="/login">Login</a></li>
+          {{/if}}
         </ul>
       </nav>
     </header>
@@ -52,9 +63,6 @@
       </footer>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
-    <script src="/assets/js/progressive-loader.js"></script>
-    <script src="/assets/js/util.js"></script>
     <script src="/assets/js/script.js"></script>
   </body>
 </html>
