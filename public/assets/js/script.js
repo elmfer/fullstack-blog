@@ -21,7 +21,7 @@ function loadBackgroundImage() {
 
 async function animateTitle(subtitle) {
   let timeFactor = subtitle ? 0.5 : 1;
-  let title = "<ELMFER Dev Blog/>" + (subtitle ? "\n" + subtitle : "");
+  let title = "<Fullstack Blog/>" + (subtitle ? "\n" + subtitle : "");
   const pageKey = subtitle ? `[\"${subtitle}\"]` : "[\"home\"]";
 
   if(sessionStorage.getItem('titleHasAnimated' + pageKey)) {
