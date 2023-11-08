@@ -25,9 +25,7 @@
       <hr>
       <nav>
         <ul>
-          <li><a href="/threads">Threads</a></li>
           <li><a href="/posts">Posts</a></li>
-          <li><a href="/articles">Articles</a></li>
           <li><a href="/login">Login</a></li>
         </ul>
       </nav>
@@ -43,10 +41,12 @@
       <footer>
         <nav style="background-image: none;">
           <ul>
-            <li><a href="/threads">Threads</a></li>
             <li><a href="/posts">Posts</a></li>
-            <li><a href="/articles">Articles</a></li>
+            {{#if loggedIn}}
+            <li><a href="/logout">Logout</a></li>
+            {{else}}
             <li><a href="/login">Login</a></li>
+            {{/if}}
           </ul>
         </nav>
       </footer>

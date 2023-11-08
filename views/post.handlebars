@@ -1,0 +1,9 @@
+<card>
+  <card-header>Posts > {{ title }}</card-header>
+  <div>Created On: {{ format_date createdAt }}</div>
+  <div>By: {{ 'author.username' }}</div>
+</card>
+
+<card class="content">
+  {{ content }}
+</card>
