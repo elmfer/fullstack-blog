@@ -1,0 +1,82 @@
+<card>
+  <card-header>Edit Post</card-header>
+  <div style="margin-top: .5rem; margin-bottom: .5rem"><strong>Title</strong></div>
+  <div style="display: flex;"><input style="flex: 1;" type="text" id="post-title"></div>
+  <div style="margin-top: .5rem; margin-bottom: .5rem"><strong>Content</strong></div>
+  <div style="display: flex;"><textarea style="flex: 1;" id="post-content"></textarea></div>
+
+  <button id="create-post-btn" onclick="doEditPost();" style="margin-top: 1rem;">Edit Post</button>
+  <button id="delete-post-btn" onclick="doDeletePost();" style="margin-top: 1rem;">Delete Post</button>
+</card>
+
+<script>
+  async function doEditPost() {
+    // Disable the button
+    $('#create-post-btn').prop('disabled', true);
+
+    const title = document.getElementById('post-title').value;
+    const content = document.getElementById('post-content').value;
+
+    // title and content cannot be empty
+    if (!title || !content) {
+      alert('Title and content cannot be empty');
+      // Re-enable the button
+      $('#create-post-btn').prop('disabled', false);
+      return;
+    }
+
+    const response = await fetch('/api/posts/{{id}}', {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ title, content })
+    });
+
+    if (response.ok) {
+      await sleep(1000);
+
+      document.location.assign('/dashboard');
+    } else {
+      alert('Failed to edit post');
+      // Re-enable the button
+      $('#create-post-btn').prop('disabled', false);
+    }
+  }
+
+  async function doDeletePost() {
+    // Disable the button
+    $('#delete-post-btn').prop('disabled', true);
+
+    // Confirm delete
+    if (!confirm('Are you sure you want to delete this post?')) {
+      // Re-enable the button
+      $('#delete-post-btn').prop('disabled', false);
+      return;
+    }
+
+    const response = await fetch('/api/posts/{{id}}', {
+      method: 'DELETE'
+    });
+
+    if (response.ok) {
+      await sleep(1000);
+
+      document.location.assign('/dashboard');
+    } else {
+      alert('Failed to delete post');
+      // Re-enable the button
+      $('#delete-post-btn').prop('disabled', false);
+    }
+  }
+
+  async function preFill() {
+    const response = await fetch('/api/posts/{{id}}');
+    const post = await response.json();
+
+    document.getElementById('post-title').value = post.title;
+    document.getElementById('post-content').value = post.content;
+  }
+
+  preFill();
+</script>

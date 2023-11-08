@@ -1,0 +1,13 @@
+<card>
+  <card-header>Dashboard</card-header>
+  <div>Logged in as: <strong>{{ username }}</strong></div>
+  <div>Member since: <strong>{{ format_date memberSince }}</strong></div>
+  <hr>
+  <div>Your Posts</div>
+  <div>
+    {{#each posts as |post|}}
+    {{> post-item }}
+    {{/each}}
+  </div>
+  <button style="margin-top: 1rem;" onclick="document.location.assign('/newpost')">Create A Post</button>
+</card>
