@@ -19,7 +19,7 @@ A fullstack blog where developers can communicate thier journies and ideas about
  
 ### Installation
  
-Ensure you have Node v18.18.0 or greater installed. Then clone the repository. Before you are able to use the application, run `npm install`. To configure the server to connect to the database, create a `.env` file that has `DB_HOST` DB_USER` `DB_PASSWORD` and `DB_NAME`; this file should be loacted in the root directory of the project.
+Ensure you have Node v18.18.0 or greater installed. Then clone the repository. Before you are able to use the application, run `npm install`. To configure the server to connect to the database, create a `.env` file that has `DB_HOST`, `DB_USER`, `DB_PASSWORD`, and `DB_NAME`; this file should be loacted in the root directory of the project.
  
 ### Usage
  
